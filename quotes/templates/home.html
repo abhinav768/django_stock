@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if ticker %}
+    {{ ticker }}
+{% endif %}
+
+<!-- {% if api1 and api %}
+    {% if api1 == "Error..." %}
+        There was a problem with your ticker symbol,
+        please try again...
+    {% elif api == "Error..." %}
+        There was a problem with your ticker symbol,
+        please try again...
+    {% else %}
+        <h1>{{ api1.name }}</h1><br/>
+        Current Price: ${{ api.c }}<br/>
+        Previous Close: ${{ api.pc }}<br/>
+        Market Cap: ${{ api1.marketCapitalization }}<br/>
+        Daily Change: ${{ api.dp }}<br/>
+        Highest Price: ${{ api.h }}<br/>
+        Lowest Price: ${{ api.l }}<br/>
+    {% endif %}    
+{% endif %} -->
+
+{% if api1 and api %}
+    {% if api1 == "Error..." or api == "Error..." %}
+        There was a problem with your ticker symbol, please try again...
+    {% else %}
+        <h1>{{ api1.name }}</h1><br/>
+        Current Price: ${{ api.c }}<br/>
+        Previous Close: ${{ api.pc }}<br/>
+        Market Cap: ${{ api1.marketCapitalization }}<br/>
+        Daily Change: ${{ api.dp }}<br/>
+        Highest Price: ${{ api.h }}<br/>
+        Lowest Price: ${{ api.l }}<br/>
+    {% endif %}
+{% else %}
+    
+{% endif %}
+
+
+<!-- {% if api %}
+    {% if api == "Error..." %}
+        There was a problem with your ticker symbol,
+        please try again...
+    {% else %} -->
+        <!-- {% for key, value in api1.items %}
+            {{ key }}: {{ value }}<br/>
+        {% endfor %} -->
+    <!-- {% endif %}    
+{% endif %} -->
+<br/>
+
+<!-- {{ api1.name }} -->
+
+{% endblock %}
+
+<!-- HNM37TC7SW95LUW9 -->

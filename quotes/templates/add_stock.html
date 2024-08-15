@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Add Stock</h1>
+<br/>
+
+<form action="{% url 'add_stock' %}" class="form-inline ml-auto" role="search" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Add to Portfolio" aria-label="Search" name="ticker">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Add Stock</button>
+</form>
+
+<br/>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Company Name</th>
+        <th scope="col">Stock Price</th>
+        <th scope="col">Previous Close</th>
+        <th scope="col">Market Cap</th>
+        <th scope="col">Daily Change</th>
+        <th scope="col">Highest Price</th>
+        <th scope="col">Lowest Price</th>
+        <!-- <th scope="col">Delete Stock</th> -->
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% if ticker %}    
+            {% for list_item in output %}
+                <tr>
+                    <th scope="row">{{ list_item.name }}</th>
+                    <td>{{ list_item.c }}</td>
+                    <td>{{ list_item.pc }}</td>
+                    <td>{{ list_item.marketCapitalization }}</td>
+                    <td>{{ list_item.dp }}</td>
+                    <td>{{ list_item.h }}</td>
+                    <td>{{ list_item.l }}</td>
+                    <!-- <td><a href="/">Delete Stock</a></td> -->
+                </tr>
+             {% endfor %}
+             <!-- {% for list_item in output2%}
+                <tr>
+                    
+                    
+                </tr>
+             {% endfor %} -->
+                
+    {% endif %}        
+    </tbody>
+  </table>
+  
+<br/>
+
+
+
+<!-- {% for item in combined_list %}
+    {{ item }}<br/>
+{% endfor %} -->
+
+
+<!-- HERE -->
+
+{% endblock %}
